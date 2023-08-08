@@ -11,20 +11,60 @@
 ## Usage
 
 ```typescript
-import Onboard from '@web3-onboard/core'
-import luksoModule from '@web3-onboard/lukso'
+import Onboard from "@web3-onboard/core";
+import luksoModule from "@lukso/web3-onboard-config";
 
 // initialize the module
-const lukso = luksoModule()
+const lukso = luksoModule();
+
+const injected = injectedModule({
+  custom: [lukso],
+  displayUnavailable: ["Universal Profiles"],
+});
+
+const chains = [
+  {
+    id: 1,
+    token: "LYX",
+    label: "LUKSO Testnet",
+    rpcUrl: "https://rpc.testnet.lukso.network/",
+  },
+  {
+    id: 2,
+    token: "LYX",
+    label: "LUKSO Mainnet",
+    rpcUrl: "https://rpc.mainnet.lukso.network",
+  },
+];
+
+const LOGO = `<svg></svg>`;
+
+const appMetadata = {
+  name: "Lukso Test dApp",
+  icon: LOGO,
+  logo: LOGO,
+  description: "My test dApp using Onboard",
+  recommendedInjectedWallets: [
+    {
+      name: "Universal Profiles",
+      url: "https://chrome.google.com/webstore/detail/universal-profiles/abpickdkkbnbcoepogfhkhennhfhehfn?hl=en",
+    },
+  ],
+};
+
+const connect: ConnectModalOptions = {
+  iDontHaveAWalletLink:
+    "https://chrome.google.com/webstore/detail/universal-profiles/abpickdkkbnbcoepogfhkhennhfhehfn?hl=en",
+  removeWhereIsMyWalletWarning: true,
+};
 
 const onboard = Onboard({
-  // ... other Onboard options
-  wallets: [
-    lukso
-    //... other wallets
-  ]
-})
+  wallets,
+  chains,
+  appMetadata,
+  connect,
+});
 
-const connectedWallets = await onboard.connectWallet()
-console.log(connectedWallets)
+const connectedWallets = await onboard.connectWallet();
+console.log(connectedWallets);
 ```
