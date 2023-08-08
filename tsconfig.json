@@ -1,0 +1,21 @@
+{
+  "include": ["src/**/*"],
+
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "declaration": true,
+    "declarationDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "*": ["./src/*", "./node_modules/*"]
+    },
+    "typeRoots": ["node_modules/@types"]
+  }
+}
