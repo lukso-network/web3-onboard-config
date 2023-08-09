@@ -1,5 +1,6 @@
-import { InjectedWalletModule } from "./index.d";
 import { createEIP1193Provider } from "@web3-onboard/common";
+
+import { InjectedWalletModule } from "./index.d";
 
 function lukso(): InjectedWalletModule {
   return {
