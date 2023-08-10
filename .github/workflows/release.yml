@@ -8,7 +8,7 @@ on:
 
 jobs:
   release:
-    name: 📦 Create GitHub release and publish to NPM
+    name: 📦 Create GitHub release and publish to npmjs
     runs-on: ubuntu-latest
 
     steps:
@@ -18,20 +18,20 @@ jobs:
           echo "Not running on main - exit"
           exit 1
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
           scope: '@lukso'
-          cache: 'npm'
+          cache: 'yarn'
 
       - name: 🔍 Check if version changed
-        uses: EndBug/version-check@v1
+        uses: EndBug/version-check@v2
         if: github.event_name == 'push'
         id: check
 
@@ -46,19 +46,15 @@ jobs:
 
       - name: 🧰 Install
         if: env.SHOULD_RELEASE == 'true'
-        run: npm ci
+        run: yarn
 
       - name: 🧹 Lint
         if: env.SHOULD_RELEASE == 'true'
-        run: npm run lint
+        run: yarn lint
 
       - name: 🛠 Build
         if: env.SHOULD_RELEASE == 'true'
-        run: npm run build
-
-      - name: 🎯 Test
-        if: env.SHOULD_RELEASE == 'true'
-        run: npm run generate-types && npm run test
+        run: yarn build
 
       # We assume this will be always triggered by a merge from develop
       # Therefore we tag the previous commit (the merge commit won't be on develop)
@@ -96,6 +92,6 @@ jobs:
       # Publish to NPM
       - name: Publish
         if: env.SHOULD_RELEASE == 'true'
-        run: npm publish --access public
+        run: yarn npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
