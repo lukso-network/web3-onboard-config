@@ -68,3 +68,4 @@ const onboard = Onboard({
 const connectedWallets = await onboard.connectWallet();
 console.log(connectedWallets);
 ```
+
