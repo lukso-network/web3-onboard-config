@@ -19,6 +19,17 @@ const lukso = luksoModule();
 
 const injected = injectedModule({
   custom: [lukso],
+  sort: (wallets) => {
+    const sorted = wallets.reduce<any[]>((sorted, wallet) => {
+      if (wallet.label === "Universal Profiles") {
+        sorted.unshift(wallet);
+      } else {
+        sorted.push(wallet);
+      }
+      return sorted;
+    }, []);
+    return sorted;
+  },
   displayUnavailable: ["Universal Profiles"],
 });
 
