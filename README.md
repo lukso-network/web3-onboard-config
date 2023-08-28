@@ -38,23 +38,23 @@ const chains = [
     id: 1,
     token: "LYX",
     label: "LUKSO Testnet",
-    rpcUrl: "https://rpc.testnet.lukso.network/",
+    rpcUrl: "https://rpc.testnet.lukso.gateway.fm/",
   },
   {
     id: 2,
     token: "LYX",
     label: "LUKSO Mainnet",
-    rpcUrl: "https://rpc.mainnet.lukso.network",
+    rpcUrl: "https://rpc.lukso.gateway.fm",
   },
 ];
 
 const LOGO = `<svg></svg>`;
 
 const appMetadata = {
-  name: "Lukso Test dApp",
+  name: "LUKSO Test dApp",
   icon: LOGO,
   logo: LOGO,
-  description: "My test dApp using Onboard",
+  description: "My test dApp using Web3 Onboard",
   recommendedInjectedWallets: [
     {
       name: "Universal Profiles",

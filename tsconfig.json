@@ -1,21 +1,33 @@
 {
-  "include": ["src/**/*"],
-
   "compilerOptions": {
-    "target": "ES2018",
-    "module": "ES2020",
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "outDir": "dist",
-    "rootDir": "src",
+    "incremental": true,
+    "target": "es2017",
+    "outDir": "build/main",
+    "rootDir": ".",
+    "moduleResolution": "Node",
+    "module": "commonjs",
     "declaration": true,
-    "declarationDir": "dist",
-    "allowSyntheticDefaultImports": true,
-    "paths": {
-      "*": ["./src/*", "./node_modules/*"]
-    },
-    "typeRoots": ["node_modules/@types"]
-  }
+    "strict": true,
+    "esModuleInterop": true,
+    "inlineSourceMap": false,
+    "sourceMap": true,
+
+    /* Additional Checks */
+    "noUnusedLocals": true /* Report errors on unused locals. */,
+    "noUnusedParameters": true /* Report errors on unused parameters. */,
+    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
+    "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
+
+    /* Debugging Options */
+    "traceResolution": false /* Report module resolution log messages. */,
+    "listEmittedFiles": false /* Print names of generated files part of the compilation. */,
+    "listFiles": false /* Print names of files part of the compilation. */,
+    "pretty": true /* Stylize errors and messages using color and context. */,
+
+    "lib": ["es2019", "dom"],
+    "typeRoots": ["node_modules/@types", "src/types"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "tests/*", "**/*.test.ts"],
+  "compileOnSave": false
 }
