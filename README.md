@@ -6,13 +6,14 @@
 
 ### Install
 
-`npm i @web3-onboard/core @web3-onboard/lukso`
+`npm i @web3-onboard/core @lukso/web3-onboard-config @web3-onboard/injected-wallets`
 
 ## Usage
 
 ```typescript
 import Onboard from "@web3-onboard/core";
 import luksoModule from "@lukso/web3-onboard-config";
+import injectedModule from '@web3-onboard/injected-wallets';
 
 // initialize the module
 const lukso = luksoModule();
@@ -37,14 +38,14 @@ const chains = [
   {
     id: 1,
     token: "LYX",
-    label: "LUKSO Testnet",
-    rpcUrl: "https://rpc.testnet.lukso.gateway.fm/",
+    label: "LUKSO Mainnet",
+    rpcUrl: "https://rpc.lukso.gateway.fm/",
   },
   {
     id: 2,
-    token: "LYX",
-    label: "LUKSO Mainnet",
-    rpcUrl: "https://rpc.lukso.gateway.fm",
+    token: "LYXt",
+    label: "LUKSO Testnet",
+    rpcUrl: "https://rpc.testnet.lukso.gateway.fm/",
   },
 ];
 
