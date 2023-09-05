@@ -71,7 +71,6 @@ const connect: ConnectModalOptions = {
 };
 
 const onboard = Onboard({
-  wallets,
   chains,
   appMetadata,
   connect,
