@@ -1,6 +1,6 @@
 {
   "name": "@lukso/web3-onboard-config",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Module for connecting dApps to Web3-Onboard to ease connection",
   "keywords": [
     "Ethereum",
