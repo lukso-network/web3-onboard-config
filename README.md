@@ -51,6 +51,8 @@ const chains = [
 
 const LOGO = `<svg></svg>`;
 
+const wallets = [injected]
+
 const appMetadata = {
   name: "LUKSO Test dApp",
   icon: LOGO,
@@ -71,7 +73,6 @@ const connect: ConnectModalOptions = {
 };
 
 const onboard = Onboard({
-  wallets,
   chains,
   appMetadata,
   connect,

@@ -1,6 +1,23 @@
-import { createEIP1193Provider } from "@web3-onboard/common";
+import {
+  createEIP1193Provider,
+  Device,
+  Platform,
+  WalletModule,
+} from "@web3-onboard/common";
 
-import { InjectedWalletModule } from "./index.d";
+interface InjectedWalletModule extends WalletModule {
+  injectedNamespace: any;
+  checkProviderIdentity: (helpers: {
+    provider: any;
+    device: Device;
+  }) => boolean;
+  platforms: Platform[];
+  /**
+   * A Url to link users to a download page for the wallet
+   * to be shown if not installed or available on the browser
+   */
+  externalUrl?: string;
+}
 
 function lukso(): InjectedWalletModule {
   return {
