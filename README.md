@@ -51,6 +51,8 @@ const chains = [
 
 const LOGO = `<svg></svg>`;
 
+const wallets = [injected]
+
 const appMetadata = {
   name: "LUKSO Test dApp",
   icon: LOGO,
