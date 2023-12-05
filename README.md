@@ -29,7 +29,7 @@ import injectedModule from "@web3-onboard/injected-wallets";
 import luksoModule from "@lukso/web3-onboard-config";
 
 // Initialize the LUKSO provider from this library
-const onboardLuksoProvider = luksoModule();
+const luksoProvider = luksoModule();
 
 // Define the download link for the extension
 const UP_BROWSER_EXTENSION_URL =
@@ -41,7 +41,7 @@ const injectedWallets = injectedModule({
    * Add custom wallets here that you want
    * to inject into Web3-Onboard
    */
-  custom: [onboardLuksoProvider],
+  custom: [luksoProvider],
 
   // OPTIONAL: Add sorting for supported wallets
   sort: (wallets) => {
@@ -93,7 +93,7 @@ const supportedChains = [
  * OPTIONAL: Set up the app description of the
  * Web3-Onboard connection window
  */
-const appMetadata = {
+const appInfo = {
   name: "My LUKSO App",
   /**
    * Pictures can either be a valid
@@ -131,11 +131,11 @@ const connectionOptions: ConnectModalOptions = {
 // Create the Web3-Onboard Component
 const web3OnboardComponent: OnboardAPI = Onboard({
   wallets: [injectedWallets],
-  chains: onboardSupportedChains,
+  chains: supportedChains,
 
   // OPTIONAL COMPONENTS:
-  appMetadata: onboardAppMetadata,
-  connect: onboardLuksoConnection,
+  appMetadata: appInfo,
+  connect: connectionOptions,
 });
 
 // Calling the connect functionality
