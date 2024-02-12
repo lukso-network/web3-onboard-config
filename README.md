@@ -137,15 +137,40 @@ const web3OnboardComponent: OnboardAPI = Onboard({
   appMetadata: appInfo,
   connect: connectionOptions,
 });
+```
 
-// Calling the connect functionality
+## Connect
+
+To set and access the Web3-Onboard wallet within your dApp, you can call the integrated `connectWallet()` method provided by the `@web3-onboard/core` library. The library will show a connection window with all supported wallets. You can then fetch the active wallet and set it as the default provider within your dApp.
+
+```js
+// Trigger the connection process and screen
 const connectedWallets = await web3OnboardComponent.connectWallet();
 
 // Debug
 console.log(connectedWallets);
 ```
 
+## Disconnect
+
+To disconnect your wallet, you have to call the `disconnectWallet()` method provided by the `@web3-onboard/core` library. This method requires specifying the wallet you wish to disconnect. You can obtain the necessary information from the state of the Web3-Onboard component, maintaining the current wallet connections.
+
+
+```js
+// Retrieve the current onboard state
+const onboardState = web3OnboardComponent.state.get();
+
+// Extract the current connected wallets
+const [currentWallet] = onboardState.wallets;
+
+if (currentWallet) {
+  // If there is an active connection, trigger the disconnect process
+  await web3OnboardComponent.disconnectWallet({ label: currentWallet.label });
+}
+```
+
 ## Sample Integration
 
+- Check out the [Web3-Onboard Guide from LUKSO](https://docs.lukso.tech/learn/dapp-developer/web3-onboard).
 - Check our sample integration for NextJS on the [dApp Boilerplate](https://github.com/lukso-network/tools-dapp-boilerplate) repository.
 - Experiment with Web3-Onboard on [up-test-dapp.lukso.tech](https://up-test-dapp.lukso.tech/).
